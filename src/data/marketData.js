@@ -1,330 +1,254 @@
-export const CURRENCIES = {
-  USD: { symbol: '$', rate: 1.0, label: 'USD ($)' },
-  EUR: { symbol: '€', rate: 0.92, label: 'EUR (€)' },
-  GBP: { symbol: '£', rate: 0.79, label: 'GBP (£)' },
-  JPY: { symbol: '¥', rate: 155.0, label: 'JPY (¥)' },
-  CAD: { symbol: 'CA$', rate: 1.36, label: 'CAD (CA$)' }
-};
+// Global Roots Market Comprehensive Dataset with Dynamic Pricing & AI Metrics
 
-export const REGIONS = [
+export const INITIAL_PRODUCTS = [
   {
-    id: 'all',
-    name: 'Global Roots (All)',
-    icon: 'Globe',
-    description: 'Explore ethical producers from every corner of the Earth.',
-    badgeColor: 'gold'
-  },
-  {
-    id: 'east-africa',
-    name: 'East African Highlands',
-    icon: 'Mountain',
-    description: 'Volcanic soils producing world-famous single origin beans & floral honey.',
-    badgeColor: 'emerald'
-  },
-  {
-    id: 'mediterranean',
-    name: 'Mediterranean Basin',
-    icon: 'Sun',
-    description: 'Centuries of olive cultivation, wild herbs, and ancient grain heritage.',
-    badgeColor: 'terracotta'
-  },
-  {
-    id: 'south-asia',
-    name: 'South Asian Spice Belt',
-    icon: 'Flame',
-    description: 'Rare saffron, heirloom cardamom, and shade-grown organic spices.',
-    badgeColor: 'amber'
-  },
-  {
-    id: 'latin-america',
-    name: 'Latin America & Andes',
-    icon: 'Compass',
-    description: 'Ancient cacao, Andean grains, and direct-trade rainforest botanicals.',
-    badgeColor: 'sage'
-  },
-  {
-    id: 'east-asia',
-    name: 'East Asian Terraces',
-    icon: 'Feather',
-    description: 'Shade-grown matcha, ceremonial teas, and artisan fermented preserves.',
-    badgeColor: 'teal'
-  }
-];
-
-export const CATEGORIES = [
-  { id: 'all', label: 'All Products', icon: 'Grid' },
-  { id: 'pantry', label: 'Artisan Pantry', icon: 'Archive' },
-  { id: 'spices', label: 'Heritage Spices', icon: 'Sparkles' },
-  { id: 'beverages', label: 'Teas & Direct-Trade Coffee', icon: 'Coffee' },
-  { id: 'produce', label: 'Rare & Organic Produce', icon: 'Leaf' },
-  { id: 'crafts', label: 'Handcrafted Living', icon: 'Package' }
-];
-
-export const PRODUCTS = [
-  {
-    id: 'ethiopian-yirgacheffe',
-    name: 'Yirgacheffe Single-Origin Heirloom Coffee',
-    category: 'beverages',
-    regionId: 'east-africa',
-    originCountry: 'Ethiopia',
-    originRegion: 'Gedeo Zone, Yirgacheffe',
-    producer: 'Kality Women Farmers Co-op',
-    priceUSD: 24.50,
-    rating: 4.9,
-    reviewsCount: 128,
-    image: '/artisan_coffee.png',
-    badges: ['Direct Trade', 'Organic', 'Single Origin'],
-    shortDesc: 'Floral jasmine notes with lemon verbena brightness and silky bergamot finish.',
-    longDesc: 'Grown at 2,200 meters elevation under natural acacia shade canopy. Hand-picked by traditional female coffee artisans of the Gedeo zone and sun-dried on raised African beds for 21 days.',
-    flavorNotes: ['Jasmine Floral', 'Bergamot', 'Meyer Lemon', 'Wild Honey'],
-    stock: 42,
-    weight: '340g / 12oz Whole Bean',
-    harvestDate: 'Harvested Feb 2026',
-    artisanStory: 'The Kality Cooperative supports over 400 smallholder female farmers, reinvesting 15% of profits into local clean water infrastructure and community schools.'
-  },
-  {
-    id: 'kashmir-saffron-royal',
-    name: 'Royal Grade Pampore Saffron Strands',
-    category: 'spices',
-    regionId: 'south-asia',
-    originCountry: 'India',
-    originRegion: 'Pampore, Kashmir',
-    producer: 'Bhat Family Estate (3rd Gen)',
-    priceUSD: 38.00,
-    rating: 5.0,
-    reviewsCount: 94,
-    image: '/heritage_spices.png',
-    badges: ['GI Tagged', 'Single Harvest', 'Hand Harvested'],
-    shortDesc: 'Deep crimson stigma threads with unmatched crocin intensity and honey-earth aroma.',
-    longDesc: 'Authentic Mongra grade Kashmiri saffron harvested at dawn during the November purple crocus bloom. Lab tested for aroma (safranal) and color intensity exceeding international ISO 3632 Grade 1.',
-    flavorNotes: ['Sweet Hay', 'Honeyed Bittersweet', 'Rich Earth', 'Warm Crimson'],
-    stock: 18,
-    weight: '2.0g Glass Jar',
-    harvestDate: 'Harvested Nov 2025',
-    artisanStory: 'The Bhat family has tended the purple saffron fields of Pampore since 1948, hand-extracting each stigma thread before sunrise.'
-  },
-  {
-    id: 'crete-extra-virgin-oil',
-    name: 'Koroneiki Reserve Extra Virgin Olive Oil',
-    category: 'pantry',
-    regionId: 'mediterranean',
-    originCountry: 'Greece',
-    originRegion: 'Kolymvari, Crete',
-    producer: 'Terra Creta Groves',
-    priceUSD: 29.90,
-    rating: 4.8,
-    reviewsCount: 215,
-    image: '/olive_oil.png',
-    badges: ['First Cold Press', 'PDO Certified', 'Organic'],
-    shortDesc: 'Peppery polyphenol kick with fresh cut grass aroma and buttery artichoke finish.',
-    longDesc: 'Single-estate extra virgin olive oil extracted within 4 hours of harvest using low-temperature mechanical cold extraction. Acidity level under 0.28%.',
-    flavorNotes: ['Fresh Olive Leaf', 'Green Almond', 'White Pepper', 'Wild Thyme'],
-    stock: 65,
-    weight: '500ml Dark Glass Bottle',
-    harvestDate: 'Early Harvest Oct 2025',
-    artisanStory: 'Harvested from century-old Koroneiki trees overlooking the Cretan Sea, cultivated without synthetic chemicals or pesticides.'
-  },
-  {
-    id: 'kyoto-ceremonial-matcha',
-    name: 'Uji First-Harvest Ceremonial Matcha',
-    category: 'beverages',
-    regionId: 'east-asia',
-    originCountry: 'Japan',
-    originRegion: 'Uji, Kyoto Prefecture',
-    producer: 'Master Tea Blenders of Ogawa',
-    priceUSD: 36.00,
-    rating: 4.9,
-    reviewsCount: 87,
-    image: '/artisan_coffee.png',
-    badges: ['Ceremonial Grade', 'Shade Grown', 'Stone Ground'],
-    shortDesc: 'Vibrant jade green froth, deep umami sweetness, and zero bitterness.',
-    longDesc: 'Crafted from first flush spring tea buds shade-covered for 30 days. Granite stone-milled slowly at 40g per hour to preserve delicate amino acids (L-theanine).',
-    flavorNotes: ['Sweet Umami', 'Creamy Chestnut', 'Fresh Spinach', 'Subtle Ocean Breeze'],
-    stock: 30,
-    weight: '30g Vacuum Sealed Tin',
-    harvestDate: 'Spring 2026 Flush',
-    artisanStory: 'Fifth-generation tea masters in Kyoto select only the topmost tender leaves, continuing a 600-year-old tea ceremonial tradition.'
-  },
-  {
-    id: 'amazonian-raw-cacao',
-    name: 'Ancestral Chuncho Raw Cacao Nibs',
-    category: 'pantry',
-    regionId: 'latin-america',
-    originCountry: 'Peru',
-    originRegion: 'Cusco, Urubamba Valley',
-    producer: 'Machu Picchu Heirloom Co-op',
-    priceUSD: 16.50,
-    rating: 4.7,
-    reviewsCount: 62,
-    image: '/heritage_spices.png',
-    badges: ['Heirloom Cacao', 'Direct Trade', 'Wild Harvest'],
-    shortDesc: 'Complex nutty cacao crunch with native plum and tropical fruit undertones.',
-    longDesc: 'Chuncho is one of the world’s rarest wild native cacao varieties, native to the Peruvian high jungle. Sun-dried and gently roasted by local indigenous communities.',
-    flavorNotes: ['Dark Berry', 'Roasted Hazelnut', 'Wild Plum', 'Subtle Cinnamon'],
-    stock: 55,
-    weight: '250g Kraft Pouch',
-    harvestDate: 'Dec 2025',
-    artisanStory: 'Protects the biodiversity of the Peruvian cloud forest while paying local native Quechua families 3x fair market wage.'
-  },
-  {
-    id: 'smoked-pimenton-de-la-vera',
-    name: 'Smoked Pimentón de La Vera Dulce',
-    category: 'spices',
-    regionId: 'mediterranean',
-    originCountry: 'Spain',
-    originRegion: 'Extremadura',
-    producer: 'Herederos de Rosa',
-    priceUSD: 12.00,
+    id: "prod-1",
+    name: "Pure Banarasi Zari Silk Saree",
+    hindiName: "शुद्ध बनारसी ज़री सिल्क साड़ी",
+    category: "Handloom & Textiles",
+    region: "Varanasi, Uttar Pradesh",
+    state: "Uttar Pradesh",
+    artisanName: "Master Craftsman Pandit Rameshwar Weaver",
+    artisanAvatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+    artisanStory: "Family has preserved the 400-year-old Mughal Kadwa weaving technique across 5 generations in Varanasi.",
+    giTag: true,
+    giTagCode: "GI-IN-0012",
+    handloomCertified: true,
+    organicCertified: false,
     rating: 4.9,
     reviewsCount: 142,
-    image: '/heritage_spices.png',
-    badges: ['Oak Smoked', 'DO Protect', 'Non-GMO'],
-    shortDesc: 'Slow oak-wood smoked red peppers offering deep smoky warmth and silky texture.',
-    longDesc: 'Jaranda and Jariza peppers smoke-dried overholm oak fire logs for 15 days, then ground on traditional stone mills to a velvety crimson powder.',
-    flavorNotes: ['Wood Smoke', 'Sweet Red Pepper', 'Earthy Warmth', 'Carmelized Paprika'],
-    stock: 80,
-    weight: '75g Vintage Tin',
-    harvestDate: 'Oct 2025',
-    artisanStory: 'Dried slowly over continuous oak firewood smoke in double-story brick smokehouses according to 16th century monastic recipes.'
+    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
+    aiQualityScore: 99,
+    aiGrade: "Grade S+ (Export Masterpiece)",
+    weaveDensity: "450 threads/sq.inch",
+    silkPurity: "100% Mulberry Silk Verified",
+    
+    // Pricing (Base INR & USD)
+    basePriceInr: 18500,
+    basePriceUsd: 225,
+    
+    // Dynamic Pricing Model Components
+    artisanFairWageInr: 12000,
+    rawMaterialCostInr: 4500,
+    complexityFactor: 1.2,
+    demandMultiplier: 1.08,
+    freshnessDiscount: 0, // 0% discount for crafts
+    suggestedTipInr: 500,
+    
+    inStock: 4,
+    leadTimeDays: 7,
+    status: "verified",
+    craftTimeHours: 120,
+    shippingWeightKg: 1.2,
+    coldChainRequired: false
   },
   {
-    id: 'pink-maras-mountain-salt',
-    name: 'Sacred Valley Sacred Pink Mountain Salt',
-    category: 'spices',
-    regionId: 'latin-america',
-    originCountry: 'Peru',
-    originRegion: 'Maras, Sacred Valley',
-    producer: 'Maras Salt Guild (Inca Heritage)',
-    priceUSD: 14.00,
-    rating: 4.8,
-    reviewsCount: 77,
-    image: '/heritage_spices.png',
-    badges: ['Artisan Harvested', 'Mineral Rich', 'Unrefined'],
-    shortDesc: 'Hand-harvested mineral spring salt from ancient Andean terraced pools.',
-    longDesc: 'Crisp, delicate mineral flakes hand-harvested by local families using pre-Incan terraced evaporation ponds fed by a subterranean warm saltwater spring.',
-    flavorNotes: ['Mild Brine', 'Mineral Earth', 'Clean Sweet Finish'],
-    stock: 40,
-    weight: '300g Linen Pouch',
-    harvestDate: 'Dry Season 2025',
-    artisanStory: 'Over 3,000 terraced pools managed by 250 native families, preserving communal Inca water sharing customs.'
-  },
-  {
-    id: 'handwoven-sisal-market-basket',
-    name: 'Bolgatanga Artisan Straw Market Tote',
-    category: 'crafts',
-    regionId: 'east-africa',
-    originCountry: 'Ghana',
-    originRegion: 'Bolgatanga, Upper East Region',
-    producer: 'Baba Tree Weavers',
-    priceUSD: 64.00,
+    id: "prod-2",
+    name: "Kashmiri Hand-Knot Pashmina Shawl",
+    hindiName: "कश्मीरी हस्तनिर्मित पश्मीना शॉल",
+    category: "Handloom & Textiles",
+    region: "Srinagar, Jammu & Kashmir",
+    state: "Jammu & Kashmir",
+    artisanName: "Ghulam Hassan & Family",
+    artisanAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    artisanStory: "Hand-spun from Changthangi goat down wool at 14,000 ft altitude. Takes over 200 hours of delicate embroidery.",
+    giTag: true,
+    giTagCode: "GI-IN-0045",
+    handloomCertified: true,
+    organicCertified: false,
     rating: 5.0,
-    reviewsCount: 51,
-    image: '/hero_banner.png',
-    badges: ['Fair Trade Certified', '100% Sustainable', 'Handcrafted'],
-    shortDesc: 'Durable, vibrant handwoven elephant grass basket with genuine goat leather handle.',
-    longDesc: 'Each basket takes 3-4 days of meticulous hand weaving. Dyed with natural plant-based pigments and wrapped with reinforced leather trim for a lifetime of market trips.',
-    flavorNotes: ['Natural Veta Vera Grass', 'Vegetable Tanned Leather'],
-    stock: 12,
-    weight: '450g Light Tote',
-    harvestDate: 'Crafted Jan 2026',
-    artisanStory: 'Master weavers set their own prices, earning sustainable incomes while keeping traditional West African basketry arts thriving.'
+    reviewsCount: 98,
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
+    aiQualityScore: 98,
+    aiGrade: "Grade S (Pashmina Purity 100%)",
+    weaveDensity: "380 threads/sq.inch",
+    silkPurity: "Pure Ladakhi Cashmere",
+
+    basePriceInr: 24000,
+    basePriceUsd: 290,
+
+    artisanFairWageInr: 16500,
+    rawMaterialCostInr: 5500,
+    complexityFactor: 1.3,
+    demandMultiplier: 1.12,
+    freshnessDiscount: 0,
+    suggestedTipInr: 750,
+
+    inStock: 2,
+    leadTimeDays: 5,
+    status: "verified",
+    craftTimeHours: 180,
+    shippingWeightKg: 0.6,
+    coldChainRequired: false
+  },
+  {
+    id: "prod-3",
+    name: "Wayanad Organic High-Altitude Black Pepper & Spices",
+    hindiName: "वायनाड जैविक काली मिर्च और मसाले",
+    category: "Organic Produce",
+    region: "Wayanad, Kerala",
+    state: "Kerala",
+    artisanName: "Kurichiya Tribal Farmers Collective",
+    artisanAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+    artisanStory: "Grown under natural rainforest canopy without synthetic pesticides in western ghat bio-reserve.",
+    giTag: true,
+    giTagCode: "GI-IN-0108",
+    handloomCertified: false,
+    organicCertified: true,
+    rating: 4.8,
+    reviewsCount: 215,
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+    aiQualityScore: 97,
+    aiGrade: "Grade A+ (Piperine Content 6.4%)",
+    freshnessScore: "Fresh Batch (Harvested 12 Days Ago)",
+    
+    basePriceInr: 1200,
+    basePriceUsd: 15,
+
+    artisanFairWageInr: 750,
+    rawMaterialCostInr: 300,
+    complexityFactor: 1.0,
+    demandMultiplier: 1.05,
+    freshnessDiscount: 0.05, // 5% seasonal discount
+    suggestedTipInr: 100,
+
+    inStock: 50,
+    leadTimeDays: 2,
+    status: "verified",
+    harvestDate: "2026-07-25",
+    shelfLifeDays: 365,
+    storageTempC: "20°C",
+    shippingWeightKg: 0.5,
+    coldChainRequired: false
+  },
+  {
+    id: "prod-4",
+    name: "GI-Certified Kashmiri Organic Saffron (Kesar)",
+    hindiName: "कश्मीरी शुद्ध जैविक केसर",
+    category: "Organic Produce",
+    region: "Pampore, Jammu & Kashmir",
+    state: "Jammu & Kashmir",
+    artisanName: "Bashir Ahmad Saffron Farm",
+    artisanAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
+    artisanStory: "Plucked at dawn from Crocus sativus flowers in Pampore's karewa soils. Deep red stigma with intense aroma.",
+    giTag: true,
+    giTagCode: "GI-IN-0312",
+    handloomCertified: false,
+    organicCertified: true,
+    rating: 4.95,
+    reviewsCount: 310,
+    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80",
+    aiQualityScore: 99,
+    aiGrade: "Grade S+ (Crocin Color Value > 240)",
+    freshnessScore: "Peak Harvest Batch",
+
+    basePriceInr: 2800,
+    basePriceUsd: 35,
+
+    artisanFairWageInr: 1800,
+    rawMaterialCostInr: 700,
+    complexityFactor: 1.1,
+    demandMultiplier: 1.15,
+    freshnessDiscount: 0,
+    suggestedTipInr: 150,
+
+    inStock: 30,
+    leadTimeDays: 3,
+    status: "verified",
+    harvestDate: "2026-07-30",
+    shelfLifeDays: 500,
+    storageTempC: "15°C",
+    shippingWeightKg: 0.1,
+    coldChainRequired: true
+  },
+  {
+    id: "prod-5",
+    name: "Authentic Kondapalli Wooden Dambach Toys",
+    hindiName: "कोंडापल्ली हस्तनिर्मित लकड़ी के खिलौने",
+    category: "Woodcraft & Carvings",
+    region: "Kondapalli, Andhra Pradesh",
+    state: "Andhra Pradesh",
+    artisanName: "Kondapalli Artisan Guild",
+    artisanAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    artisanStory: "Carved from soft 'Tella Poniki' wood and painted using non-toxic vegetable dyes.",
+    giTag: true,
+    giTagCode: "GI-IN-0078",
+    handloomCertified: false,
+    organicCertified: false,
+    rating: 4.7,
+    reviewsCount: 84,
+    image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80",
+    aiQualityScore: 96,
+    aiGrade: "Grade A (Eco-Friendly Vegetable Dyes)",
+
+    basePriceInr: 1850,
+    basePriceUsd: 22,
+
+    artisanFairWageInr: 1100,
+    rawMaterialCostInr: 450,
+    complexityFactor: 1.0,
+    demandMultiplier: 1.02,
+    freshnessDiscount: 0,
+    suggestedTipInr: 100,
+
+    inStock: 15,
+    leadTimeDays: 4,
+    status: "verified",
+    craftTimeHours: 24,
+    shippingWeightKg: 0.8,
+    coldChainRequired: false
+  },
+  {
+    id: "prod-6",
+    name: "Handcrafted Blue Pottery Royal Vase",
+    hindiName: "जयपुर हस्तनिर्मित ब्लू पॉटरी रॉयल वासे",
+    category: "Pottery & Ceramics",
+    region: "Jaipur, Rajasthan",
+    state: "Rajasthan",
+    artisanName: "Shree Kripal Kumbh Studio",
+    artisanAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+    artisanStory: "Made without clay using quartz powder, raw glass, and natural cobalt oxide for imperial turquoise blue glaze.",
+    giTag: true,
+    giTagCode: "GI-IN-0023",
+    handloomCertified: false,
+    organicCertified: false,
+    rating: 4.85,
+    reviewsCount: 167,
+    image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80",
+    aiQualityScore: 97,
+    aiGrade: "Grade A+ (Zero Firing Flaws Detected)",
+
+    basePriceInr: 3200,
+    basePriceUsd: 39,
+
+    artisanFairWageInr: 1900,
+    rawMaterialCostInr: 800,
+    complexityFactor: 1.15,
+    demandMultiplier: 1.06,
+    freshnessDiscount: 0,
+    suggestedTipInr: 200,
+
+    inStock: 8,
+    leadTimeDays: 6,
+    status: "verified",
+    craftTimeHours: 40,
+    shippingWeightKg: 2.1,
+    coldChainRequired: false
   }
 ];
 
-export const ARTISANS = [
-  {
-    id: 'kality-coop',
-    name: 'Kality Women Coffee Farmers',
-    region: 'Yirgacheffe, Ethiopia',
-    photo: '/artisan_coffee.png',
-    impact: 'Empowering 400+ female coffee growers through direct-trade pricing.',
-    quote: 'Our coffee carries the perfume of our volcanic hills and the strength of our mothers.'
-  },
-  {
-    id: 'bhat-family',
-    name: 'The Bhat Saffron Heritage',
-    region: 'Pampore, Kashmir',
-    photo: '/heritage_spices.png',
-    impact: 'Preserving 3 generations of organic GI-tagged saffron cultivation.',
-    quote: 'Every crimson strand requires gentle morning hands and deep respect for the land.'
-  },
-  {
-    id: 'terra-creta',
-    name: 'Terra Creta Olive Guild',
-    region: 'Kolymvari, Crete',
-    photo: '/olive_oil.png',
-    impact: 'Zero-waste cold extraction protecting 100-year-old olive groves.',
-    quote: 'The Mediterranean sun and sea breeze are captured in every golden drop.'
-  }
-];
+export const PLATFORM_STATS = {
+  artisansCount: "14,250+",
+  villagesCovered: "320+",
+  giTaggedProducts: "85%",
+  directArtisanPayoutPct: "91.4%",
+  co2OffsetTons: "420 Tons",
+  totalSalesVolumeInr: "₹4.82 Crore"
+};
 
-export const RECIPES = [
-  {
-    id: 'kashmiri-saffron-risotto',
-    title: 'Golden Kashmiri Saffron & Olive Oil Risotto',
-    prepTime: '35 mins',
-    servings: 4,
-    difficulty: 'Medium',
-    region: 'Mediterranean & South Asia Fusion',
-    image: '/heritage_spices.png',
-    description: 'A luxurious velvet arborio risotto infused with Royal Grade Kashmiri Saffron and finished with fresh Cretan extra virgin olive oil.',
-    ingredients: [
-      { name: 'Royal Grade Pampore Saffron Strands', productId: 'kashmir-saffron-royal' },
-      { name: 'Koroneiki Reserve Extra Virgin Olive Oil', productId: 'crete-extra-virgin-oil' },
-      { name: 'Sacred Valley Pink Mountain Salt', productId: 'pink-maras-mountain-salt' }
-    ],
-    steps: [
-      'Steep 8-10 saffron strands in warm vegetable broth for 15 minutes until glowing amber.',
-      'Sauté shallots in Cretan olive oil over medium heat until translucent.',
-      'Add arborio rice and toast for 2 minutes. Deglaze with dry white wine.',
-      'Ladle in warm saffron broth gradually while stirring constantly for 18-20 minutes.',
-      'Finish with a generous drizzle of Koroneiki olive oil and pinch of Pink Maras mountain salt.'
-    ]
-  },
-  {
-    id: 'ceremonial-matcha-latte',
-    title: 'Uji Kyoto Iced Ceremonial Oat Matcha',
-    prepTime: '5 mins',
-    servings: 1,
-    difficulty: 'Easy',
-    region: 'East Asian Terraces',
-    image: '/artisan_coffee.png',
-    description: 'Silky smooth whisked ceremonial grade matcha layered over ice and creamy oat milk.',
-    ingredients: [
-      { name: 'Uji First-Harvest Ceremonial Matcha', productId: 'kyoto-ceremonial-matcha' }
-    ],
-    steps: [
-      'Sift 2g (1 tsp) of Uji Ceremonial Matcha into a bamboo chawan bowl.',
-      'Add 60ml of 80°C (175°F) hot water.',
-      'Vigorously whisk in a "W" motion with a bamboo chasen until a thick emerald foam forms.',
-      'Pour over ice cubes and 150ml of chilled oat milk. Enjoy fresh.'
-    ]
-  }
-];
-
-export const REVIEWS = [
-  {
-    id: 1,
-    author: 'Elena Rostova',
-    location: 'Zurich, Switzerland',
-    productName: 'Royal Grade Pampore Saffron',
-    rating: 5,
-    comment: 'The aroma when opening the jar is unlike any supermarket saffron. Pure, deep, and colors risotto vividly with just 6 strands!'
-  },
-  {
-    id: 2,
-    author: 'Marcus Vance',
-    location: 'Portland, USA',
-    productName: 'Yirgacheffe Single-Origin Coffee',
-    rating: 5,
-    comment: 'Sublime jasmine notes on pour over. Knowing that 15% goes back to clean water in Gedeo makes every cup taste even better.'
-  },
-  {
-    id: 3,
-    author: 'Aria Takahashi',
-    location: 'Vancouver, Canada',
-    productName: 'Koroneiki Reserve Extra Virgin Oil',
-    rating: 5,
-    comment: 'The fresh pepper kick in the throat proves high polyphenol count. Truly restaurant quality olive oil.'
-  }
+export const LOGISTICS_CARRIERS = [
+  { name: "Delhivery Express Rural", speed: "2-3 Days", costInr: 180, rating: "4.9★", co2PerKg: "0.12 kg" },
+  { name: "BlueDart Cold-Chain Direct", speed: "1-2 Days", costInr: 350, rating: "4.95★", co2PerKg: "0.18 kg" },
+  { name: "India Post Speed Post Hub", speed: "3-5 Days", costInr: 90, rating: "4.6★", co2PerKg: "0.08 kg" },
+  { name: "DHL Express Worldwide (Air)", speed: "2-4 Days (Global)", costInr: 1450, rating: "4.98★", co2PerKg: "0.45 kg" }
 ];
